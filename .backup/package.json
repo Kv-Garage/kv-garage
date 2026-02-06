@@ -1,0 +1,38 @@
+{
+  "name": "kv-garage-wholesale",
+  "version": "1.0.0",
+  "description": "B2B wholesale marketplace for tech liquidation packs",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy && node verify-build.js",
+    "build:prod": "eleventy && node verify-build.js",
+    "dev": "eleventy --serve --port=8080",
+    "start": "eleventy --serve --port=8080",
+    "netlify:dev": "netlify dev",
+    "netlify:build": "npm run build:prod",
+    "verify": "node verify-build.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "wholesale",
+    "tech",
+    "liquidation",
+    "b2b",
+    "marketplace",
+    "eleventy"
+  ],
+  "author": "KV Garage",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-navigation": "^0.3.5",
+    "@11ty/eleventy-img": "^3.1.0",
+    "luxon": "^3.4.4"
+  },
+  "dependencies": {
+    "pdfkit": "^0.14.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

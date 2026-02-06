@@ -1,0 +1,38 @@
+---
+layout: admin-base.html
+title: Order Management
+permalink: /admin/orders/
+---
+
+<div class="admin-dashboard">
+    <header class="admin-header">
+        <h1>Order Management</h1>
+        <div class="admin-actions">
+            <button id="logout-btn" class="btn btn-secondary">Logout</button>
+        </div>
+    </header>
+    
+    <nav class="admin-nav">
+        <a href="/admin/dashboard/">Dashboard</a>
+        <a href="/admin/packs/">Packs</a>
+        <a href="/admin/orders/" class="active">Orders</a>
+    </nav>
+    
+    <main class="admin-content">
+        <div class="section-header">
+            <h2>Manage Orders</h2>
+        </div>
+        
+        <div id="orders-list" class="data-table-container">
+            <p>Loading orders...</p>
+        </div>
+        
+        <form name="order-update" method="POST" data-netlify="true" style="display: none;">
+            <input type="hidden" name="order-id" value="">
+            <input type="hidden" name="order-status" value="">
+        </form>
+    </main>
+</div>
+
+<script src="/assets/js/shared-admin-auth.js"></script>
+<script src="/assets/js/admin-orders.js"></script>

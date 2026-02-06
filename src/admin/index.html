@@ -1,0 +1,39 @@
+---
+layout: admin-base.html
+title: Admin Login
+permalink: /admin/
+---
+
+<div class="admin-login">
+    <div class="login-container">
+        <div class="login-box">
+            <h1>KV Garage Admin</h1>
+            <p class="subtitle">B2B Wholesale Management</p>
+            
+            <form name="admin-login" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/admin/dashboard/">
+                <p class="hidden" style="display: none;">
+                    <label>Don't fill this out: <input name="bot-field" /></label>
+                </p>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="admin@kvgarage.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="••••••••">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Sign In</button>
+                
+                <p class="demo-credentials">
+                    <small>Demo: admin@kvgarage.com / admin123</small>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/shared-admin-auth.js"></script>
+<script src="/assets/js/admin-login.js"></script>
