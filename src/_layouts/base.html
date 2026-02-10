@@ -5,47 +5,26 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--Swap our for actual link-->
+        <!-- Canonical -->
         <link rel="canonical" href="https://{{ client.domain }}{{ page.url }}">
 
         <meta name="description" content="{{ description }}">
         <meta name="keywords" content="">
 
-        <!--Social Media Display-->
-        <meta property="og:title" content="{{ metaTitle }}"/>
-        <meta property="og:description" content="{{ description }}"/>
-        <meta property="og:type" content="website"/>
-        <meta property="og:url" content="https://{{ client.domain }}{{ page.url }}"/>
-        <meta property="og:image" content="/images/social.jpg"/>
-        <meta property="og:image:secure_url" content="/images/social.jpg"/>
+        <!-- Social Media -->
+        <meta property="og:title" content="{{ metaTitle }}">
+        <meta property="og:description" content="{{ description }}">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://{{ client.domain }}{{ page.url }}">
+        <meta property="og:image" content="/images/social.jpg">
+        <meta property="og:image:secure_url" content="/images/social.jpg">
 
-        <!--Favicons-->
-       <!-- Fallback favicon (no media query for maximum compatibility) -->
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/light/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/light/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/light/apple-touch-icon.png">
-    <link rel="manifest" href="/assets/favicons/light/site.webmanifest">
-
-    <!-- Light theme favicons -->
-    <link rel="icon" href="/assets/favicons/light/favicon.ico" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/light/favicon-32x32.png"
-        media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/light/favicon-16x16.png"
-        media="(prefers-color-scheme: light)">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/light/apple-touch-icon.png"
-        media="(prefers-color-scheme: light)">
-    <link rel="manifest" href="/assets/favicons/light/site.webmanifest" media="(prefers-color-scheme: light)">
-
-    <!-- Dark theme favicons -->
-    <link rel="icon" href="/assets/favicons/dark/favicon.ico" media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/dark/favicon-32x32.png"
-        media="(prefers-color-scheme: dark)">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/dark/favicon-16x16.png"
-        media="(prefers-color-scheme: dark)">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/dark/apple-touch-icon.png"
-        media="(prefers-color-scheme: dark)">
-    <link rel="manifest" href="/assets/favicons/dark/site.webmanifest" media="(prefers-color-scheme: dark)">
+        <!-- Favicons -->
+        <link rel="icon" href="/favicon.ico" sizes="any">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/light/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/light/favicon-16x16.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicons/light/apple-touch-icon.png">
+        <link rel="manifest" href="/assets/favicons/light/site.webmanifest">
 
         <!-- Preload -->
         <link rel="preload" as="image" href="/assets/images/logo_light.png">
@@ -55,109 +34,72 @@
         <link rel="stylesheet" href="/css/root.css">
         <link rel="stylesheet" href="/css/dark.css">
         <link rel="stylesheet" href="/css/lead-forms.css">
-  <!-- Snipcart CSS and JS - DISABLED (need valid API key) -->
-  <!-- <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.6.0/default/snipcart.css" /> -->
-  <!-- <script async src="https://cdn.snipcart.com/themes/v3.6.0/default/snipcart.js"></script> -->
-        <link rel="preload" as="image" href="{{ preloadImg }}"/>
+        <link rel="stylesheet" href="/css/critical.css">
 
-        <!-- Loading in page specific CSS sheets from css block -->
-        <link rel="stylesheet" href="/css/critical.css"/>
+        {% if preloadCSS %}
         <link rel="stylesheet" href="{{ preloadCSS }}">
-        {% if additionalCSS %}<link rel="stylesheet" href="{{ additionalCSS }}">{% endif %}
+        {% endif %}
 
-        <!--Put analytics tag here at the bottom to prevent it from render blocking-->
-        
-        <!-- Performance Optimization Scripts -->
+        {% if additionalCSS %}
+        <link rel="stylesheet" href="{{ additionalCSS }}">
+        {% endif %}
+
         <script src="/assets/js/performance-optimization.js"></script>
         <script src="/assets/js/testing-system.js"></script>
-        
-        <!-- Global Authentication Service -->
         <script src="/assets/js/auth-service.js"></script>
 
-        <!-- For home page, use full title, including location for SEO. Other pages should just include the page name -->
         <title>
-            {% if page.url == '/'%}
+            {% if page.url == '/' %}
                 {{ client.name }} | {{ tagTitle }} | {{ client.address.city }}, {{ client.address.county }}
             {% else %}
                 {{ tagTitle }} | {{ client.name }}
             {% endif %}
         </title>
     </head>
+
     <body>
-        <!--Screen reader skip main nav-->
-        <a class="skip" aria-label="skip to main content" href="#main">Click To Skip To Main Content</a>
+        <a class="skip" aria-label="skip to main content" href="#main">
+            Click To Skip To Main Content
+        </a>
 
         {% include "header.html" %}
-        <main id="main">{{ content | safe }}</main>
+
+        <!-- 🚫 NO "| safe" HERE -->
+        <main id="main">
+            {{ content }}
+        </main>
+
         {% include "footer.html" %}
 
-        <!-- Global Cart Modal -->
+        <!-- Cart Modal -->
         <div class="cart-modal" id="cartModal">
-          <div class="cart-modal-header">
-            <h3>Shopping Cart</h3>
-            <button class="cart-close" onclick="window.globalCart.toggleCart()">×</button>
-          </div>
-          <div class="cart-items" id="cartItems">
-            <p class="empty-cart">Your cart is empty</p>
-          </div>
-          <div class="cart-footer">
-            <div class="cart-total-display">
-              <span>Total:</span>
-              <span class="cart-total-amount">$0.00</span>
+            <div class="cart-modal-header">
+                <h3>Shopping Cart</h3>
+                <button class="cart-close" onclick="window.globalCart.toggleCart()">×</button>
             </div>
-            <button class="checkout-btn" onclick="window.globalCart.checkout()">
-              Proceed to Checkout
-            </button>
-          </div>
+            <div class="cart-items" id="cartItems">
+                <p class="empty-cart">Your cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total-display">
+                    <span>Total:</span>
+                    <span class="cart-total-amount">$0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="window.globalCart.checkout()">
+                    Proceed to Checkout
+                </button>
+            </div>
         </div>
 
         <script defer src="/assets/js/nav.js"></script>
         <script defer src="/assets/js/dark.js"></script>
         <script defer src="/assets/js/global-cart.js"></script>
 
-        <!--
-        This script adds a class to the body after scrolling 100px
-        and we used these body.scroll styles to create some on scroll 
-        animations with the navbar
-    -->
         <script defer>
-            document.addEventListener('scroll', (e) => {
+            document.addEventListener('scroll', () => {
                 const scroll = document.documentElement.scrollTop;
-                if (scroll >= 100) {
-                    document
-                        .querySelector('body')
-                        .classList
-                        .add('scroll')
-                } else {
-                    document
-                        .querySelector('body')
-                        .classList
-                        .remove('scroll')
-                }
+                document.body.classList.toggle('scroll', scroll >= 100);
             });
         </script>
-        <!-- Snipcart Configuration - DISABLED (need valid API key) -->
-        <!-- 
-        <div id="snipcart" 
-             data-api-key="YOUR_SNIPCART_API_KEY_HERE" 
-             data-config-modal-style="side"
-             data-config-add-product-behavior="none"
-             data-config-test-mode="true">
-        </div>
-        
-        <script>
-            window.SnipcartSettings = {
-                publicApiKey: 'YOUR_SNIPCART_API_KEY_HERE',
-                loadStrategy: 'on-user-interaction',
-                addProductBehavior: 'none',
-                modalStyle: 'side',
-                testMode: true
-            };
-        </script>
-        -->
-        
-        <script>
-   
-</script>
     </body>
 </html>
