@@ -1,16 +1,17 @@
 module.exports = function (eleventyConfig) {
 
-  // Dummy image shortcode (prevents Eleventy build errors)
+  // Kill-switch for old image shortcodes
   eleventyConfig.addShortcode("image", () => "");
 
-  // Passthrough copy for images or other assets
+  // Pass through static assets
   eleventyConfig.addPassthroughCopy("src/images");
 
   return {
     dir: {
       input: "src",
-      output: "_site",
-      includes: "_includes"
+      includes: "_includes",
+      layouts: "_includes",
+      output: "_site"
     }
   };
 };
