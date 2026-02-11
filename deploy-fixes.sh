@@ -358,7 +358,7 @@ echo -e "${YELLOW}Step 5: Creating fixed contact page...${NC}"
 
 cat > src/pages/contact.html << 'EOF'
 ---
-layout: base.html
+.njk.njk
 title: Contact Us
 permalink: /contact/
 ---
@@ -422,7 +422,7 @@ echo "  ✓ Created src/pages/contact.html"
 
 cat > src/pages/contact-success.html << 'EOF'
 ---
-layout: base.html
+layout: base.njk
 title: Message Sent
 permalink: /contact/success/
 ---

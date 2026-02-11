@@ -1,16 +1,17 @@
+const eleventyNavigationPlugin = require("@11ty/eleventy-navigation");
+
 module.exports = function (eleventyConfig) {
 
-  // Kill-switch for old image shortcodes
-  eleventyConfig.addShortcode("image", () => "");
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
-  // Pass through static assets
   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/css");
 
   return {
     dir: {
       input: "src",
       includes: "_includes",
-      layouts: "_includes",
       output: "_site"
     }
   };

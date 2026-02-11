@@ -1,0 +1,76 @@
+/**
+ * Alert/Notification Styles
+ * Ensures alerts appear above all other elements including header
+ */
+
+/* Base notification styles */
+.notification {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    padding: 1rem 1.5rem !important;
+    border-radius: 8px !important;
+    color: white !important;
+    font-weight: 600 !important;
+    z-index: 300001 !important; /* Higher than header (200000) and modals (300000) */
+    transform: translateX(100%) !important;
+    transition: transform 0.3s ease !important;
+    max-width: 400px !important;
+    word-wrap: break-word !important;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+}
+
+/* Notification types */
+.notification-success {
+    background-color: #10b981 !important;
+}
+
+.notification-error {
+    background-color: #ef4444 !important;
+}
+
+.notification-warning {
+    background-color: #f59e0b !important;
+}
+
+.notification-info {
+    background-color: #3b82f6 !important;
+}
+
+/* Animation states */
+.notification.show {
+    transform: translateX(0) !important;
+}
+
+/* Dark mode support */
+body.dark-mode .notification {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .notification {
+        right: 10px !important;
+        left: 10px !important;
+        max-width: none !important;
+        transform: translateY(-100%) !important;
+    }
+    
+    .notification.show {
+        transform: translateY(0) !important;
+    }
+}
+
+/* Multiple notifications stacking */
+.notification + .notification {
+    top: calc(20px + 80px) !important;
+}
+
+.notification + .notification + .notification {
+    top: calc(20px + 160px) !important;
+}
+
+.notification + .notification + .notification + .notification {
+    top: calc(20px + 240px) !important;
+}

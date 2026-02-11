@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    
+<section id="int-hero">
+    <h1 id="home-h">Admin Dashboard</h1>
+   <img src="/images/banner_img.png" alt="vinyl floors" loading="lazy">
+    '(max-width: 850px) 850px, 1920px'%}
+  </section>
+
+<div class="admin-dashboard-container">
+    <!-- Login Section (shown when not authenticated) -->
+    <div id="login-section" class="login-section">
+        <div class="login-container">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard Section (shown when authenticated) -->
+    <div id="dashboard-section" class="dashboard-section" style="display: none;">
+        <div class="dashboard-header">
+            <h2>Admin Dashboard</h2>
+            <div class="admin-actions">
+                <button id="refresh-dashboard" class="btn btn-secondary">Refresh</button>
+                <button id="logout-btn" class="btn btn-danger">Logout</button>
+            </div>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <div class="stat-icon">📦</div>
+                <div class="stat-content">
+                    <h3>Total Packs</h3>
+                    <span id="total-packs">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-content">
+                    <h3>Total Revenue</h3>
+                    <span id="total-revenue">$0.00</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📋</div>
+                <div class="stat-content">
+                    <h3>Total Orders</h3>
+                    <span id="total-orders">0</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-content">
+                    <h3>Pending Orders</h3>
+                    <span id="pending-orders">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-grid">
+                <a href="/admin/packs/" class="action-card">
+                    <div class="action-icon">📦</div>
+                    <h4>Manage Packs</h4>
+                    <p>Create, edit, and manage wholesale packs</p>
+                </a>
+                <a href="/admin/orders/" class="action-card">
+                    <div class="action-icon">📋</div>
+                    <h4>View Orders</h4>
+                    <p>Track and manage customer orders</p>
+                </a>
+                <button class="action-card" onclick="openManifestUpload()">
+                    <div class="action-icon">📄</div>
+                    <h4>Upload Manifest</h4>
+                    <p>Upload CSV manifests for packs</p>
+                </button>
+                <button class="action-card" onclick="openCustomPackRequests()">
+                    <div class="action-icon">🎯</div>
+                    <h4>Custom Requests</h4>
+                    <p>Review custom pack requests</p>
+                </button>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <h3>Recent Activity</h3>
+            <div id="activity-list" class="activity-list">
+                <div class="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading recent activity...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Manifest Upload Modal -->
+<div id="manifest-upload-modal" class="modal">
+    <div class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Manifest</h3>
+                <button class="modal-close" onclick="closeManifestUpload()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="manifest-upload-form" class="upload-form">
+                    <div class="form-group">
+                        <label for="pack-select">Select Pack</label>
+                        <select id="pack-select" name="pack_id" required>
+                            <option value="">Choose a pack...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="manifest-file">Manifest File (CSV)</label>
+                        <input type="file" id="manifest-file" name="manifest" accept=".csv" required>
+                        <small>Upload a CSV file with columns: sku, item_name, quantity, condition, notes</small>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="closeManifestUpload()">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Upload Manifest</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Pack Requests Modal -->
+<div id="custom-requests-modal" class="modal">
+    <div class="modal-overlay">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Custom Pack Requests</h3>
+                <button class="modal-close" onclick="closeCustomPackRequests()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="custom-requests-list" class="requests-list">
+                    <div class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading custom requests...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/js/shared-admin-auth.js"></script>
+<script>
+    console.log('shared-admin-auth.js loaded');
+    console.log('sharedAdminAuth available:', typeof window.sharedAdminAuth);
+</script>
+<script src="/assets/js/admin-dashboard.js" onerror="console.error('Failed to load admin-dashboard.js')"></script>
+<script>
+    console.log('admin-dashboard.js loaded');
+    console.log('AdminDashboard available after script load:', typeof AdminDashboard);
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM loaded, creating AdminDashboard...');
+        console.log('AdminDashboard available:', typeof AdminDashboard);
+        
+        // Wait for both AdminDashboard class and shared authentication system to be ready
+        function waitForReady() {
+            if (typeof AdminDashboard !== 'undefined' && window.sharedAdminAuth) {
+                console.log('Both AdminDashboard and SharedAdminAuth are ready, initializing...');
+                try {
+                    window.adminDashboard = new AdminDashboard();
+                    console.log('AdminDashboard instance created:', window.adminDashboard);
+                } catch (error) {
+                    console.error('AdminDashboard initialization error:', error);
+                }
+            } else {
+                console.log('Waiting for AdminDashboard and SharedAdminAuth to be ready...');
+                setTimeout(waitForReady, 100);
+            }
+        }
+        
+        waitForReady();
+    });
+</script>
+
+  </body>
+</html>

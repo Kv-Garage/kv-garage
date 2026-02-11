@@ -1,0 +1,45 @@
+<h1>Quick Fix: Export Syntax Errors in Production</h1>
+<h2>TL;DR</h2>
+<p>Your production site is serving <strong>cached JavaScript files</strong> with old <code>export</code> statements. The local files are correct.</p>
+<h2>Fix (Choose One):</h2>
+<h3>Option 1: Netlify Dashboard (Easiest)</h3>
+<ol>
+<li>Go to <a href="https://app.netlify.com">app.netlify.com</a></li>
+<li>Open your site</li>
+<li><strong>Deploys</strong> → <strong>Deploy settings</strong> → <strong>Clear cache and retry deploy</strong></li>
+</ol>
+<h3>Option 2: Force New Deployment</h3>
+<pre><code class="language-bash">git commit --allow-empty -m &quot;Clear Netlify cache&quot;
+git push origin main
+</code></pre>
+<h3>Option 3: Netlify CLI</h3>
+<pre><code class="language-bash">netlify build --clear-cache
+netlify deploy --prod
+</code></pre>
+<h2>After Deploying:</h2>
+<ol>
+<li>
+<p><strong>Hard refresh</strong> your browser:</p>
+<ul>
+<li>Chrome/Firefox: <code>Ctrl + Shift + R</code> (Windows) or <code>Cmd + Shift + R</code> (Mac)</li>
+<li>Safari: <code>Cmd + Option + R</code></li>
+</ul>
+</li>
+<li>
+<p><strong>Test</strong> the admin dashboard login</p>
+</li>
+<li>
+<p>If still broken, check browser console for new errors</p>
+</li>
+</ol>
+<h2>What Changed:</h2>
+<p>✅ Fixed JavaScript cache headers (1 hour instead of 1 year)<br>
+✅ Added <code>must-revalidate</code> directive<br>
+✅ Added build verification script<br>
+✅ Updated Netlify configuration</p>
+<h2>Verify Everything Works:</h2>
+<pre><code class="language-bash">npm run verify
+</code></pre>
+<p>This will check your build for common issues.</p>
+<h2>Need Help?</h2>
+<p>See <code>DEPLOYMENT.md</code> for detailed troubleshooting.</p>

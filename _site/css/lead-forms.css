@@ -1,0 +1,266 @@
+/* ============================================ */
+/*                Lead Forms CSS               */
+/* ============================================ */
+
+/* Lead Form Section */
+.lead-form-section {
+  padding: 4rem 0;
+  margin: 2rem 0;
+}
+
+.lead-form-container {
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--card-bg, white);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--card-border, #e2e8f0);
+  box-shadow: var(--shadow, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+}
+
+body.dark-mode .lead-form-container {
+  background: var(--medium);
+  border: 1px solid var(--border);
+}
+.lead-form-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.lead-form-title {
+  font-size: var(--headerFontSize);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--headerColor, #1e293b);
+}
+
+.lead-form-description {
+  font-size: 1rem;
+  color: var(--muted, #64748b);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Form Styling */
+.lead-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.lead-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.lead-form-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.lead-form-label {
+  display: block;
+  font-weight: 500;
+  color: var(--text, #374151);
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+body.dark-mode .lead-form-label {
+  color: var(--bodyTextColorWhite);
+}
+.lead-form-input,
+.lead-form-select,
+.lead-form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border, #d1d5db);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: var(--bg, #fafafa);
+  color: var(--text, #374151);
+  transition: all 0.2s ease;
+}
+body.dark-mode .lead-form-input,
+body.dark-mode .lead-form-select,
+body.dark-mode .lead-form-textarea {
+  background: var(--medium);
+  border: 1px solid var(--accent);
+  color: var(--bodyTextColorWhite);
+}
+
+.lead-form-input:focus,
+.lead-form-select:focus,
+.lead-form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-color, #3b82f6);
+  background: var(--card-bg, white);
+}
+
+body.dark-mode .lead-form-input:focus,
+body.dark-mode .lead-form-select:focus,
+body.dark-mode .lead-form-textarea:focus {
+  background: var(--medium);
+  border-color: var(--accent-color, #3b82f6);
+  color: var(--bodyTextColorWhite);
+}
+
+.lead-form-textarea {
+  resize: vertical;
+}
+
+/* Checkbox Grid */
+.lead-form-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.lead-form-checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--muted, #6b7280);
+}
+
+body.dark-mode .lead-form-checkbox-item {
+  color: var(--bodyTextColorWhite);
+}
+
+.lead-form-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-color, #3b82f6);
+}
+
+/* Newsletter Checkbox */
+.lead-form-newsletter {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.lead-form-newsletter-checkbox {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-color, #3b82f6);
+  margin-top: 0.125rem;
+  flex-shrink: 0;
+}
+
+.lead-form-newsletter-label {
+  color: var(--muted, #6b7280);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+body.dark-mode .lead-form-newsletter-label {
+  color: var(--bodyTextColorWhite);
+}
+
+/* Submit Button */
+.lead-form-submit {
+  background: var(--accent-color, #3b82f6);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.5rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.lead-form-submit:hover {
+  background: var(--accent-hover, #2563eb);
+}
+
+/* Footer Text */
+.lead-form-footer {
+  font-size: 0.75rem;
+  color: var(--muted, #9ca3af);
+  text-align: center;
+  margin: 0;
+}
+
+body.dark-mode .lead-form-footer {
+  color: var(--bodyTextColorWhite);
+}
+
+/* Color Variants */
+.lead-form-blue .lead-form-input:focus,
+.lead-form-blue .lead-form-select:focus,
+.lead-form-blue .lead-form-textarea:focus {
+  border-color: #3b82f6;
+}
+
+.lead-form-blue .lead-form-checkbox,
+.lead-form-blue .lead-form-newsletter-checkbox {
+  accent-color: #3b82f6;
+}
+
+.lead-form-blue .lead-form-submit {
+  background: #3b82f6;
+}
+
+.lead-form-blue .lead-form-submit:hover {
+  background: #2563eb;
+}
+
+.lead-form-green .lead-form-input:focus,
+.lead-form-green .lead-form-select:focus,
+.lead-form-green .lead-form-textarea:focus {
+  border-color: #10b981;
+}
+
+.lead-form-green .lead-form-checkbox,
+.lead-form-green .lead-form-newsletter-checkbox {
+  accent-color: #10b981;
+}
+
+.lead-form-green .lead-form-submit {
+  background: #10b981;
+}
+
+.lead-form-green .lead-form-submit:hover {
+  background: #059669;
+}
+
+.lead-form-orange .lead-form-input:focus,
+.lead-form-orange .lead-form-select:focus,
+.lead-form-orange .lead-form-textarea:focus {
+  border-color: #f59e0b;
+}
+
+.lead-form-orange .lead-form-checkbox,
+.lead-form-orange .lead-form-newsletter-checkbox {
+  accent-color: #f59e0b;
+}
+
+.lead-form-orange .lead-form-submit {
+  background: #f59e0b;
+}
+
+.lead-form-orange .lead-form-submit:hover {
+  background: #d97706;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .lead-form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .lead-form-checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .lead-form-container {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+  
+  .lead-form-title {
+    font-size: 1.75rem;
+  }
+}

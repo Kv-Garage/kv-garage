@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Payment Successful</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    
+<style>
+        .success-container {
+            max-width: 600px;
+            margin: 20rem auto 10rem;
+            padding: 2rem;
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        body.dark-mode .success-container {
+            background: var(--medium);
+            border: 1px solid var(--border);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        body.dark-mode .success-icon {
+            color: #28a745;
+        }
+        .success-title {
+            font-size: 2rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message {
+            font-size: 1.1rem;
+            color: #6c757d;
+            margin-bottom: 2rem;
+        }
+        
+        .order-details {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        body.dark-mode .order-details {
+            background: var(--medium);
+            border: 1px solid var(--border);
+        }
+        .order-details h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        
+        .order-details p {
+            margin: 0.5rem 0;
+            color: #6c757d;
+        }
+        
+        .action-buttons {
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.15s ease-in-out;
+        }
+        
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0056b3;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #545b62;
+            color: white;
+        }
+    </style>
+
+<div class="success-container">
+        <div class="success-icon">✓</div>
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-message">
+            Thank you for your purchase. Your order has been processed and you will receive a confirmation email shortly.
+        </p>
+        
+        <div class="order-details" id="order-details">
+            <h3>Order Details</h3>
+            <p><strong>Order ID:</strong> <span id="order-id">Loading...</span></p>
+            <p><strong>Pack:</strong> <span id="pack-name">Loading...</span></p>
+            <p><strong>Amount:</strong> <span id="order-amount">Loading...</span></p>
+            <p><strong>Status:</strong> <span id="order-status">Processing</span></p>
+            <p><strong>Date:</strong> <span id="order-date">Loading...</span></p>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="/packs/" class="btn btn-primary">Browse More Packs</a>
+            <a href="/" class="btn btn-secondary">Return Home</a>
+        </div>
+    </div>
+    
+    <script>
+        // Load order details from localStorage or URL parameters
+        document.addEventListener('DOMContentLoaded', function() {
+            // Try to get order details from localStorage
+            const orderData = localStorage.getItem('lastOrder');
+            
+            if (orderData) {
+                try {
+                    const order = JSON.parse(orderData);
+                    displayOrderDetails(order);
+                } catch (error) {
+                    console.error('Failed to parse order data:', error);
+                    showGenericSuccess();
+                }
+            } else {
+                showGenericSuccess();
+            }
+        });
+        
+        function displayOrderDetails(order) {
+            document.getElementById('order-id').textContent = order.id || 'N/A';
+            document.getElementById('pack-name').textContent = order.pack_name || 'N/A';
+            document.getElementById('order-amount').textContent = `$${(order.amount || 0).toFixed(2)}`;
+            document.getElementById('order-status').textContent = order.status || 'Processing';
+            document.getElementById('order-date').textContent = new Date(order.created_at || Date.now()).toLocaleDateString();
+        }
+        
+        function showGenericSuccess() {
+            document.getElementById('order-id').textContent = 'Order processing...';
+            document.getElementById('pack-name').textContent = 'Your selected pack';
+            document.getElementById('order-amount').textContent = 'Processing...';
+            document.getElementById('order-status').textContent = 'Processing';
+            document.getElementById('order-date').textContent = new Date().toLocaleDateString();
+        }
+    </script>
+
+  </body>
+</html>
