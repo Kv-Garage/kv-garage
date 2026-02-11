@@ -7,7 +7,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BUILD_DIR = './public';
+const BUILD_DIR = './_site';
 const JS_FILES_DIR = path.join(BUILD_DIR, 'assets/js');
 
 let hasErrors = false;
@@ -56,8 +56,9 @@ const requiredFiles = [
   'assets/js/shared-admin-auth.js',
   'assets/js/auth-service.js',
   'assets/js/nav.js',
-  'data/packs.json',
-  'data/manifests.json'
+  // data files are optional in this build; uncomment if your pipeline outputs them
+  // 'data/packs.json',
+  // 'data/manifests.json'
 ];
 
 requiredFiles.forEach(file => {

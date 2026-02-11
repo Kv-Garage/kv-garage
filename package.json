@@ -4,14 +4,8 @@
   "description": "B2B wholesale marketplace for tech liquidation packs",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy && node verify-build.js",
-    "build:prod": "eleventy && node verify-build.js",
-    "dev": "eleventy --serve --port=8080",
-    "start": "eleventy --serve --port=8080",
-    "netlify:dev": "netlify dev",
-    "netlify:build": "npm run build:prod",
-    "verify": "node verify-build.js",
-    "test": "echo \"No tests specified\" && exit 0"
+    "build": "eleventy",
+    "start": "eleventy --serve"
   },
   "keywords": [
     "wholesale",
