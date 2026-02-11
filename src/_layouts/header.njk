@@ -1,0 +1,23 @@
+{% set navPages = collections.all | eleventyNavigation %}
+
+<header id="site-header">
+  <div class="nav-wrap">
+    <div class="container">
+      <a class="logo" href="/">
+        <img src="/assets/images/logo_dark.png" alt="logo" width="200" height="60" loading="lazy">
+      </a>
+
+      <nav id="main-nav" aria-label="main navigation">
+        <ul>
+        {%- for entry in navPages %}
+          <li><a {% if entry.url==page.url %}class="active"{% endif %} href="{{ entry.url }}">{{ entry.title }}</a></li>
+        {%- endfor %}
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn" href="/packs/">Packs</a>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,110 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="canonical" href="https://www.kvgarage.com/" />
-
   <meta name="description" content="" />
-
-  <meta property="og:title" content="" />
-  <meta property="og:description" content="" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.kvgarage.com/" />
-  <meta property="og:image" content="/images/social.jpg" />
 
   <link rel="icon" href="/favicon.ico" />
 
-  <link rel="stylesheet" href="/css/root.css" />
-  <link rel="stylesheet" href="/css/critical.css" />
+  <!-- Primary stylesheet -->
+  <link rel="stylesheet" href="/css/style.css">
 
-  
-
-  <title>
-    
-      Kv Garage | 
-    
-  </title>
+  <title>Kv Garage | </title>
 </head>
-
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-
   
 
-<div id="navigation">
-    <div aria-hidden="true" class="background-color-div"></div>
-
+<header id="site-header">
+  <div class="nav-wrap">
     <div class="container">
-        <!-- Logo -->
-        <a class="logo" aria-label="click to go to home page" href="/">
-            <img class="light" aria-hidden="true" src="/assets/images/logo_dark.png" decoding="async" alt="logo" width="221"
-                height="66">
-            <img class="dark" aria-hidden="true" src="/assets/images/logo_light.png" decoding="async" loading="lazy"
-                alt="logo" width="221" height="66">
-        </a>
+      <a class="logo" href="/">
+        <img src="/assets/images/logo_dark.png" alt="logo" width="200" height="60" loading="lazy">
+      </a>
 
-        <!-- Mobile Nav toggle -->
-        <button class="hamburger-menu" aria-expanded="false" aria-controls="navbar-menu">
-            <span aria-hidden="true"></span>
-        </button>
+      <nav id="main-nav" aria-label="main navigation">
+        <ul>
+          <li><a class="active" href="/">Home</a></li>
+          <li><a  href="/pages/about/">About</a></li>
+          <li><a  href="/shop/">Shop</a></li>
+        </ul>
+      </nav>
 
-        <!-- Main Nav -->
-        <nav id="navbar-menu" aria-label="main navigation">
-            <ul>
-                <li class="" id="Home">
-                    
-                    <a  class="active"  href="/">Home</a>
-                    
-                </li>
-                <li class="" id="About">
-                    
-                    <a  href="/pages/about/">About</a>
-                    
-                </li>
-                <li class="" id="Shop">
-                    
-                    <a  href="/shop/">Shop</a>
-                    
-                </li>
-            </ul>
-        </nav>
-
-        <!-- Actions -->
-        <div class="header-actions" role="group" aria-label="User actions">
-            <!-- Dark Mode -->
-            <button id="dark-mode-toggle" class="icon-btn" aria-label="Toggle dark mode">
-                <!-- centered, 24×24 moon -->
-                <svg class="moon" viewBox="0 0 24 24" aria-hidden="true">
-                    <path fill="currentColor" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-                </svg>
-                <img class="sun" aria-hidden="true" src="/assets/svgs/sun.svg" alt="">
-            </button>
-
-
-            <!-- Login -->
-            <a class="icon-btn login-btn" href="/admin/dashboard/"
-                aria-label="Login">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                        d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.94C6.03 13.98 9.01 12.9 12 12.9C14.99 12.9 17.97 13.98 18 15.94C16.71 17.92 14.5 19.2 12 19.2Z" />
-                </svg>
-            </a>
-
-            <!-- Cart -->
-            <button class="icon-btn cart-btn cart-toggle" aria-label="Open cart">
-                <svg class="cart-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path fill="currentColor"
-                        d="M7 18a2 2 0 1 0 0 4a2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4a2 2 0 0 0 0-4ZM3 2h2.21l1.2 3H21a1 1 0 0 1 .92 1.39l-2.4 6A2 2 0 0 1 17.62 14H8.03l-.6 1.2A2 2 0 0 1 5.25 16H5a1 1 0 0 1 0-2h.25l1.9-3.8L5.12 4H3a1 1 0 1 1 0-2Zm6.07 8h8.45l1.6-4H7.6l1.47 4Z" />
-                </svg>
-                <span class="cart-count" aria-live="polite"></span>
-            </button>
-
-        </div>
+      <div class="header-actions">
+        <a class="btn" href="/packs/">Packs</a>
+      </div>
     </div>
-</div>
+  </div>
+</header>
 
 
   <main id="main">
@@ -112,109 +46,44 @@
 <section class="hero">
   <div class="container">
     <h1>Kv Garage</h1>
-    <p>Private supply, custom sourcing, and wholesale</p>
-    <p>
-      <a class="btn" href="/packs/">View Packs</a>
-      <a class="btn" href="/contact/">Contact</a>
-    </p>
+    <p class="lead">Private supply, custom sourcing, and wholesale</p>
+    <div class="actions">
+      <a class="header-cta btn" href="/packs/">View Packs</a>
+      <a class="btn-ghost" href="/contact/">Contact</a>
+    </div>
   </div>
 </section>
 
   </main>
 
-  <!-- ============================================ -->
-<!--                   Footer                     -->
-<!-- ============================================ -->
-
-<footer id="footer">
+  <footer id="site-footer">
   <div class="container">
-    <div class="left-section">
-      <a class="logo" href="/"
-        ><img
-          loading="lazy"
-          decoding="async"
-          src="/assets/images/logo_dark.png"
-          alt="logo"
-          width="264"
-          height="78"
-      /></a>
-    </div>
-    <div class="right-section">
-      <div class="lists">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="/"><img src="/assets/images/logo_dark.png" alt="logo" width="180" height="56" loading="lazy"></a>
+      </div>
+      <div class="footer-links">
+        <h4>Information</h4>
         <ul>
-          <li>
-            <h2>Information</h2>
-          </li>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/about">About Us</a>
-          </li>
-          <li>
-            <a href="/refund-policy">Refund Policy</a>
-          </li>
-          <li>
-            <a href="/contact">Contact</a>
-          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/contact/">Contact</a></li>
         </ul>
-        <!-- <ul>
-          <li>
-            <h2>Services</h2>
-          </li>
-          <li><a href="/vinyl-flooring/">Vinyl Flooring</a></li>
-          <li><a href="/flooring-installation/">Flooring Installation</a></li>
-        </ul> -->
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
         <ul>
-          <li>
-            <h2>Contact</h2>
-          </li>
-          <!-- <li>
-                        <a href="/contact">First Address Line<br>Denver CO 80206</a>
-                    </li> -->
-          <li>
-            <a href="tel:6162282244">Tel: (616) 228-2244 </a>
-          </li>
-          <li>
-            <a href="mailto:kvgarage@kvgarage.com">Click to Email</a>
-          </li>
+          <li><a href="tel:6162282244">(616) 228-2244</a></li>
+          <li><a href="mailto:kvgarage@kvgarage.com">Email us</a></li>
         </ul>
       </div>
     </div>
-  </div>
-
-  <div class="credit">
-    <span>Designed and Hand Coded by</span>
-    <a href="www.kalamazoowebsitedesign.com" target="_blank" rel="noopener"
-      >Kalamazoo Website Design</a
-    >
-    <span class="copyright"> Copyright 2025 - Present</span>
+    <div class="credit">© <span class="credit-year"></span> KV Garage</div>
+    <script>document.currentScript.previousElementSibling.querySelector('.credit-year').textContent = new Date().getFullYear();</script>
   </div>
 </footer>
 
 
   <script defer src="/assets/js/nav.js"></script>
 </body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-  </head>
-  <body>
-    
-<section class="hero">
-  <div class="container">
-    <h1>Kv Garage</h1>
-    <p>Private supply, custom sourcing, and wholesale</p>
-    <p>
-      <a class="btn" href="/packs/">View Packs</a>
-      <a class="btn" href="/contact/">Contact</a>
-    </p>
-  </div>
-</section>
-
-  </body>
 </html>
