@@ -1,21 +1,75 @@
-/* Minimal base stylesheet to ensure consistent layout and centered hero */
-:root{--container:1100px;--accent:#0b72ff;--bg:#ffffff}
+/* Base layout and responsive styles */
+:root{
+	--container:1100px;
+	--accent:#0b72ff;
+	--bg:#ffffff;
+	--muted:#666;
+	--text:#111;
+}
+
 *{box-sizing:border-box}
-body{font-family:Inter,system-ui,Arial,Helvetica,sans-serif;margin:0;color:#111;background:var(--bg)}
+body{
+	font-family:Inter,system-ui,Arial,Helvetica,sans-serif;
+	margin:0;color:var(--text);background:var(--bg);
+	-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+}
+
 .container{max-width:var(--container);margin:0 auto;padding:1rem}
-header#site-header{border-bottom:1px solid #eee}
-.nav-wrap .container{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
-nav#main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
-nav#main-nav a{color:#111;text-decoration:none;padding:.25rem .5rem}
-nav#main-nav a.active{font-weight:600}
-.header-actions .btn{background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:6px;text-decoration:none}
-main#main{padding:3rem 0}
+
+/* Header / Navigation */
+header#site-header{border-bottom:1px solid #eee;background:transparent}
+.nav-wrap .container{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;gap:1rem}
+.logo img{display:block;max-width:220px;height:auto}
+nav#main-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.25rem;align-items:center}
+nav#main-nav a{color:var(--text);text-decoration:none;padding:.25rem .5rem;display:inline-block}
+nav#main-nav a.active{font-weight:700}
+.header-actions .btn{background:var(--accent);color:#fff;padding:.5rem 1rem;border-radius:8px;text-decoration:none;display:inline-block}
+
+/* Main content and hero */
+main#main{padding:3.5rem 0}
 .hero{padding:6rem 0;background:linear-gradient(180deg,#fafafa,#fff);text-align:center}
-.hero .lead{max-width:700px;margin:0 auto 1.5rem;font-size:1.125rem;color:#333}
-.hero h1{margin:0 0 1rem;font-size:2.25rem}
+.hero .lead{max-width:720px;margin:0 auto 1.5rem;font-size:1.125rem;color:#333}
+.hero h1{margin:0 0 1rem;font-size:2.5rem;line-height:1.05}
 .hero .actions{display:flex;gap:1rem;justify-content:center}
+.header-cta{background:var(--accent);color:#fff;padding:.7rem 1.25rem;border-radius:8px;text-decoration:none}
 .btn-ghost{background:transparent;border:1px solid #111;color:#111;padding:.5rem 1rem;border-radius:6px}
-footer#site-footer{border-top:1px solid #eee;padding:2rem 0;margin-top:3rem}
-.footer-grid{display:flex;gap:2rem;align-items:flex-start}
-.footer-grid .logo img{max-width:180px}
-.credit{margin-top:1.25rem;color:#666;font-size:.9rem}
+
+/* Pack grid (pages/packs.html) */
+.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:1.5rem}
+.pack-card{background:#fff;border:1px solid #eee;padding:1.25rem;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+.pack-card h2{margin-top:0;margin-bottom:.5rem}
+.pack-card ul{margin:0 0 1rem;padding-left:1.25rem}
+
+/* Footer */
+footer#site-footer{border-top:1px solid #eee;padding:2.25rem 0;margin-top:3rem;background:transparent}
+.footer-grid{display:grid;grid-template-columns:220px 1fr 220px;gap:2rem;align-items:flex-start}
+.footer-grid .footer-brand .logo img{max-width:180px}
+.footer-links h4,.footer-contact h4{margin:0 0 .5rem;font-size:1rem}
+.footer-links ul,.footer-contact ul{list-style:none;padding:0;margin:0}
+.footer-links li,.footer-contact li{margin-bottom:.5rem}
+.credit{margin-top:1.25rem;color:var(--muted);font-size:.9rem}
+
+/* Responsive breakpoints */
+@media (max-width: 900px){
+	:root{--container:920px}
+	.hero{padding:4.5rem 0}
+	.hero h1{font-size:2.1rem}
+	.pack-grid{grid-template-columns:repeat(2,1fr)}
+	.footer-grid{grid-template-columns:1fr 1fr}
+}
+
+@media (max-width: 600px){
+	.container{padding:0.75rem}
+	.nav-wrap .container{flex-direction:column;align-items:flex-start}
+	nav#main-nav ul{flex-direction:column;gap:.5rem;width:100%}
+	.header-actions{margin-top:.75rem}
+	.hero{padding:3.5rem 0}
+	.hero h1{font-size:1.6rem}
+	.hero .lead{font-size:1rem}
+	.pack-grid{grid-template-columns:1fr}
+	.footer-grid{grid-template-columns:1fr}
+}
+
+/* Utility tweaks */
+a{color:inherit}
+img{max-width:100%;height:auto}
