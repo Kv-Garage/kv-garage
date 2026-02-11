@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Home
+eleventyNavigation:
+  key: home
+  title: Home
+---
+
+<section class="hero">
+  <div class="container">
+    <h1>{{ client.name | default('KV Garage') }}</h1>
+    <p>{{ client.tagline | default('Private supply, custom sourcing, and wholesale') }}</p>
+    <p>
+      <a class="btn" href="/packs/">View Packs</a>
+      <a class="btn" href="/contact/">Contact</a>
+    </p>
+  </div>
+</section>
