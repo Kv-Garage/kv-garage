@@ -5,6 +5,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy("src/css");
 
+  eleventyConfig.addCollection("products", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/products/**/*.{md,json}");
+  });
+
   return {
     dir: {
       input: "src",
